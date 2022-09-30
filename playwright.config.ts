@@ -45,7 +45,7 @@ const config: PlaywrightTestConfig = {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'https://katalon-demo-cura.herokuapp.com',
 
-    storageState: 'storageState.json',
+    storageState: process.env.STORAGE_STATE_PATH,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
