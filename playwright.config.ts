@@ -1,11 +1,16 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
+import * as dotenv from 'dotenv';
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// require('dotenv').config();
+dotenv.config({
+  path: '.env',
+  override: true,
+});
+
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -52,7 +57,7 @@ const config: PlaywrightTestConfig = {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
-        baseURL: 'https://katalon-demo-cura.herokuapp.com/',
+        baseURL: process.env.BASE_URL as string,
       },
     },
 
