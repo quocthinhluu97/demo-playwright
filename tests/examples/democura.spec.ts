@@ -1,5 +1,11 @@
 import { test, expect } from '@playwright/test';
 
+
+test.beforeEach(async ({ page }, testInfo) => {
+  console.log(`Running ${testInfo.title}`);
+});
+
+
 test('test', async ({ page }) => {
   await page.goto('/');
   await page.locator('#btn-make-appointment').click();
@@ -14,4 +20,11 @@ test('test', async ({ page }) => {
   await page.locator('text=Book Appointment').click();
 
   await expect(page).toHaveURL('https://katalon-demo-cura.herokuapp.com/appointment.php#summary');
+});
+
+test('Failed test', async ({ page }) => {
+  await page.goto('/');
+  await page.locator('#btn-make-appointment').click();
+
+  await expect(page).toHaveTitle('Dummy');
 });
