@@ -1,6 +1,6 @@
 import { chromium, FullConfig } from '@playwright/test';
 import * as dotenv from 'dotenv';
-import { CuraPage } from '@pages/CuraPage';
+import { CuraPage } from '@pages/cura.page';
 
 dotenv.config({
   path: '.env',
