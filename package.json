@@ -8,9 +8,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.26.1"
-  },
-  "dependencies": {
+    "@playwright/test": "^1.26.1",
     "dotenv": "^16.0.3"
   }
 }
