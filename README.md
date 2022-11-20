@@ -75,6 +75,10 @@ At the project's directory:
    ```sh
    npm install
    ```
+2. Install playwright
+   ```sh
+   npx playwright install
+   ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
