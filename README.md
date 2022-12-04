@@ -39,7 +39,6 @@
         <li><a href="#run-with-commandline">Run tests with commandline</a></li>
       </ul>
     </li>
-    <li><a href="#confluence-page">Confluence page</a></li>
   </ol>
 </details>
 <br>
