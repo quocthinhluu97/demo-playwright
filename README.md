@@ -138,10 +138,3 @@ npx playwright codegen
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- Confluence page -->
-## Confluence page
-To be inserted later
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
