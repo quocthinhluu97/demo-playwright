@@ -1,0 +1,10 @@
+{
+    "baseUrl": "https://katalon-demo-cura.herokuapp.com/",
+    "accounts": [
+        {
+            "username": "John Doe",
+            "password": "ThisIsNotAPassword",
+            "storageState": "storageState.json"
+        }
+    ]
+}

@@ -1,27 +1,21 @@
 import { chromium, FullConfig } from '@playwright/test';
-import * as dotenv from 'dotenv';
-import { CuraPage } from '@pages/cura.page';
-
-dotenv.config({
-  path: '.env',
-  override: true,
-});
+import { LoginPage } from '@pages/login.page';
+import { Data } from "@data/data";
+import { DataFile, EnvironmentUtils } from "@utils/environment.util";
 
 async function globalSetup(config: FullConfig) {
-  const { baseURL, storageState } = config.projects[0].use;
+  const { accounts } = EnvironmentUtils.read<Data>(DataFile.TestData);
   const browser = await chromium.launch();
   const context = await browser.newContext();
   const page = await context.newPage();
 
-  await page.goto(baseURL!);
+  const loginPage = new LoginPage(page);
+  await loginPage.navigate();
+  await loginPage.makeAppointment();
 
-  const curaPage = new CuraPage(page);
-
-  await curaPage.makeAppointment();
-
-  await curaPage.login(process.env.USERNAME as string, process.env.PASSWORD as string);
-
-  await page.context().storageState({ path: storageState as string });
+  const { username, password, storageState } = accounts[0];
+  await loginPage.login(username, password);
+  await page.context().storageState({ path: storageState });
 
   await browser.close();
 }
