@@ -11,6 +11,18 @@
             "@helpers/*": [
                 "./helpers/*"
             ],
+            "@data/*": [
+                "./data/*"
+            ],
+            "@utils/*": [
+                "./utils/*"
+            ],
+            "@models/*": [
+                "./pages/models/*"
+            ],
+            "@fixtures/*": [
+                "./fixtures/*"
+            ],
         }
     }
 }
