@@ -1,4 +1,4 @@
-import { Facilities, HealthcarePrograms } from '@pages/cura.page';
+import { Facilities, HealthcarePrograms } from '@pages/enums';
 import { test } from "@fixtures/base.fixture";
 import { DateTime } from "luxon";
 
