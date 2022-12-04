@@ -50,7 +50,10 @@ export class BookAppointmentPage extends BasePage {
     }
 
     async bookAppointment() {
-        await this.bookAppointmentBtn.click();
+        await Promise.all([
+            this.bookAppointmentBtn.click(),
+            this.waitForNetworkIdle(),
+        ]);
         return new SummaryPage(this.page);
     }
 
