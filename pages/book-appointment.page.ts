@@ -1,25 +1,26 @@
 import { BasePage } from '@pages/base.page';
 import { Page, Locator } from '@playwright/test';
-import { AppointmentFormModel } from './models/appointment-form.model';
+import { AppointmentFormModel } from '@models/appointment-form.model';
 import { SummaryPage } from './summary.page';
 
 export class BookAppointmentPage extends BasePage {
-    readonly makeAppointmentBtn: Locator;
+    readonly path: string = '#appointment';
     readonly bookAppointmentBtn: Locator;
     readonly hospitalReadmissionInput: Locator;
     readonly facilityDropdown: Locator;
     readonly calendar: Locator;
     readonly comment: Locator;
+    readonly date: Locator;
     healthcareProgramCheckbox: Locator;
 
     constructor(page: Page) {
         super(page);
-        this.makeAppointmentBtn = page.locator('#btn-make-appointment');
         this.bookAppointmentBtn = page.locator('button:has-text("Book Appointment")');
         this.hospitalReadmissionInput = page.locator('input[name="hospital_readmission"]');
         this.facilityDropdown = page.locator('select[name="facility"]');
         this.calendar = page.locator('[placeholder="dd\\/mm\\/yyyy"]');
         this.comment = page.locator('textarea[name="comment"]');
+        this.date = (today) => page.locator(`xpath=//td[@class="day" and text()="${today}"]`);
     }
 
     async fill(model: Partial<AppointmentFormModel>) {
@@ -45,10 +46,6 @@ export class BookAppointmentPage extends BasePage {
         await this.page.locator(`input[type="Radio"][value=${program}]`).check();
     }
 
-    async makeAppointment() {
-        await this.makeAppointmentBtn.click();
-    }
-
     async bookAppointment() {
         await Promise.all([
             this.bookAppointmentBtn.click(),
@@ -60,6 +57,6 @@ export class BookAppointmentPage extends BasePage {
     async selectDate(date: Date) {
         await this.calendar.click();
         const today = date.getDate();
-        await this.page.locator(`text=${today}`).first().click();
+        await this.date(today).first().click();
     }
 }
