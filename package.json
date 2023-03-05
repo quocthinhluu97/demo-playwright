@@ -10,6 +10,7 @@
   "devDependencies": {
     "@playwright/test": "^1.26.1",
     "dotenv": "^16.0.3",
+    "lodash": "^4.17.21",
     "luxon": "^3.1.1",
     "promise-fs": "^2.1.1"
   }
