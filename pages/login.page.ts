@@ -2,6 +2,7 @@ import { BasePage } from '@pages/base.page';
 import { Page, Locator } from '@playwright/test';
 
 export class LoginPage extends BasePage {
+    readonly path: string = 'profile.php#login';
     readonly usernameInput: Locator;
     readonly passwordInput: Locator;
     readonly loginBtn: Locator;

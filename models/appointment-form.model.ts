@@ -1,6 +1,6 @@
 export interface AppointmentFormModel {
     facility: string;
-    hospitalReadmission: boolean;
+    hospitalReadmission: boolean | string;
     healthcareProgram: string;
     visitDate: Date;
     comment: string;

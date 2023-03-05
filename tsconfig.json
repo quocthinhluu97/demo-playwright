@@ -23,6 +23,12 @@
             "@fixtures/*": [
                 "./fixtures/*"
             ],
+            "@constants/*": [
+                "./constants/*"
+            ],
+            "@models/*": [
+                "./models/*"
+            ],
         }
     }
 }

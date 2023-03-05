@@ -2,6 +2,7 @@ import { Page, Locator, expect } from "@playwright/test";
 import { BasePage } from "./base.page";
 
 export class SummaryPage extends BasePage {
+    readonly path: string = 'appointment.php#summary';
     readonly summarySection: Locator;
 
     constructor(page: Page) {
