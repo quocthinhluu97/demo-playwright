@@ -13,19 +13,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.13.x
-          cache: node-setup
-
-      - name: Cache node modules
-        id: cache-npm
-        uses: actions/cache@v3
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          cache: 'npm'
+          cache-dependency-path: subdir/package-lock.json
 
       - name: Install node dependencies
-        if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
         run: npm ci
 
       - name: Cache playwright
