@@ -45,7 +45,7 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-This project is created to automate UI testing for WEC project
+This project is created to demo on automation UI testing using Playwright framework
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
