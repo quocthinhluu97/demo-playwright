@@ -3,13 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test",
+    "eslint": "npx eslint . --ext ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.26.1",
+    "@typescript-eslint/eslint-plugin": "^5.55.0",
+    "@typescript-eslint/parser": "^5.55.0",
     "dotenv": "^16.0.3",
+    "eslint": "^8.36.0",
     "lodash": "^4.17.21",
     "luxon": "^3.1.1",
     "promise-fs": "^2.1.1"
