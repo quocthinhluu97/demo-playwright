@@ -1,7 +1,7 @@
 import { Facilities, HealthcarePrograms } from '@constants/appointment.enum';
 import { test } from "@fixtures/base.fixture";
 import { AppointmentFormModel, compareAppointments } from '@models/appointment-form.model';
-import { TimeUtils } from '@utils/appointment.util';
+import { TimeUtils } from '@utils/time.util';
 
 test.describe.configure({ mode: 'serial'});
 
