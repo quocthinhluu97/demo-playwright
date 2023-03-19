@@ -15,20 +15,31 @@ jobs:
           node-version: 16.13.x
           cache: node-setup
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Cache node modules
+        id: cache-npm
         uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          
 
-      - name: Install playwright
-        run: npx playwright install 
+      - name: Install node dependencies
+        if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
+        run: npm ci
+
+      - name: Cache playwright
+        id: cache-playwright
         uses: actions/cache@v3
+        env:
+          cache-name: cache-playwright
         with:
           path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-playwright-1.26.1
+
+      - name: Install playwright
+        if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
+        run: npx playwright install --with-deps
 
       - name: Run tests
         run: npm run test
