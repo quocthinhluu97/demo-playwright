@@ -8,6 +8,7 @@ type BaseFixture = {
     loginPage: LoginPage;
     bookAppointmentPage: BookAppointmentPage;
     summaryPage: SummaryPage;
+    historyPage: HistoryPage;
 }
 
 export const test = base.extend<BaseFixture>({

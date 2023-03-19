@@ -18,5 +18,5 @@ export class EnvironmentUtils {
         this.data[dataFile] = parsedData;
 
         return this.data[dataFile] as T;
-    };
+    }
 }

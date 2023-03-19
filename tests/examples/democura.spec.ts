@@ -1,32 +1,31 @@
-import { Facilities, HealthcarePrograms } from '@pages/enums';
-import { expect, test } from "@fixtures/base.fixture";
-import { DateTime } from "luxon";
-import { Paths } from '@constants/paths';
-import { EnvironmentUtils } from '@utils/environment.util';
-import { AppointmentFormModel } from '@models/appointment-form.model';
-import { AppointmentUtils } from '@utils/appointment.util';
+import { Facilities, HealthcarePrograms } from '@constants/appointment.enum';
+import { test } from "@fixtures/base.fixture";
+import { AppointmentFormModel, compareAppointments } from '@models/appointment-form.model';
+import { TimeUtils } from '@utils/appointment.util';
 
 test.describe.configure({ mode: 'serial'});
 
-const appointmentInfo: Partial<AppointmentFormModel> = {
+const now = TimeUtils.now();
+
+const appointmentInfo: AppointmentFormModel = {
   facility: Facilities.HONGKONG,
   hospitalReadmission: true,
   healthcareProgram: HealthcarePrograms.MEDICARE,
-  visitDate: DateTime.now().toJSDate(),
+  visitDate: now.toJSDate() as string,
   comment: 'I told you I was sick',
 };
 
 test('Book an appointment', async ({ bookAppointmentPage, summaryPage }) => {
   await bookAppointmentPage.sectionHeader.makeAppointment();
-
   await bookAppointmentPage.fill(appointmentInfo);
-
   await bookAppointmentPage.bookAppointment();
   await summaryPage.verifyAppointmentConfirmed();
 });
 
 test('Check appointment history', async({ summaryPage, historyPage }) => {
   await summaryPage.sectionHeader.navigationMenu.goToHistoryPage();
-  const returnedAppointmentInfo = await historyPage.getAppointmentByDate(appointmentInfo.visitDate);
-  await AppointmentUtils.compare(appointmentInfo, returnedAppointmentInfo);
+  const returnedAppointmentInfo = await historyPage.getAppointmentByDate(now.toFormat('dd/MM/yyyy'));
+  const originalAppointmentInfo = {...appointmentInfo };
+  originalAppointmentInfo.visitDate = now.toFormat('dd/MM/yyyy');
+  await compareAppointments(originalAppointmentInfo, returnedAppointmentInfo);
 });

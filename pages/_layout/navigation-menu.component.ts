@@ -1,3 +1,5 @@
+import { Locator, Page } from "@playwright/test";
+
 export class NavigationMenu {
     readonly page: Page;
     readonly toggleNavigationMenu: Locator;
