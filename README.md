@@ -85,8 +85,7 @@ At the project's directory:
 
 <!-- Run tests -->
 ## Run Tests
-There are instructions to run tests on your local machine
-
+Here are instructions to run tests on your local machine
 <br>
 
 ### Run with plugin
