@@ -1,3 +1,5 @@
+import { Page, Locator } from '@playwright/test';
+
 import { NavigationMenu } from '@pages/_layout/navigation-menu.component';
 
 export class HeaderComponent {
