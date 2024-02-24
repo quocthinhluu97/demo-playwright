@@ -6,7 +6,7 @@
 <img src="images/logo.png" alt="Logo" width="646" height="400">
 
   <br>
-  <h3 align="center">WEC Playwright UI Automation</h3>
+  <h3 align="center">Demo Playwright UI Automation</h3>
 
   <br>
   <p align="center">
