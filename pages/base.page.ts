@@ -1,12 +1,19 @@
 import { Page } from "@playwright/test";
 import { DataFile, EnvironmentUtils } from '@utils/environment.util';
 import { Data } from '@data/data';
+import { HeaderComponent } from '@pages/_layout/header.component';
+import { FooterComponent } from '@pages/_layout/footer.component';
 
 export abstract class BasePage {
-    protected readonly page: Page;
+    readonly page: Page;
+    abstract readonly path: string;
+    readonly sectionHeader: HeaderComponent;
+    readonly sectionFooter: FooterComponent;
 
     constructor(page: Page) {
         this.page = page;
+        this.sectionHeader = new HeaderComponent(page);
+        this.sectionFooter = new FooterComponent(page);
     }
 
     async navigate() {

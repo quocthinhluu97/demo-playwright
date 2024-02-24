@@ -39,14 +39,13 @@
         <li><a href="#run-with-commandline">Run tests with commandline</a></li>
       </ul>
     </li>
-    <li><a href="#confluence-page">Confluence page</a></li>
   </ol>
 </details>
 <br>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-This project is created to automate UI testing for WEC project
+This project is created to demo on automation UI testing using Playwright framework
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -75,6 +74,10 @@ At the project's directory:
    ```sh
    npm install
    ```
+2. Install playwright
+   ```sh
+   npx playwright install
+   ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -82,8 +85,7 @@ At the project's directory:
 
 <!-- Run tests -->
 ## Run Tests
-There are instructions to run tests on your local machine
-
+Here are instructions to run tests on your local machine
 <br>
 
 ### Run with plugin
@@ -134,10 +136,3 @@ npx playwright codegen
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- Confluence page -->
-## Confluence page
-To be inserted later
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-

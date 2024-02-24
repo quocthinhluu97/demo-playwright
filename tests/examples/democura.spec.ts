@@ -1,18 +1,31 @@
-import { Facilities, HealthcarePrograms } from '@pages/enums';
+import { Facilities, HealthcarePrograms } from '@constants/appointment.enum';
 import { test } from "@fixtures/base.fixture";
-import { DateTime } from "luxon";
+import { AppointmentFormModel, compareAppointments } from '@models/appointment-form.model';
+import { TimeUtils } from '@utils/time.util';
 
-test('Book an appointment', async ({ bookAppointmentPage }) => {
-  await bookAppointmentPage.makeAppointment();
+test.describe.configure({ mode: 'serial'});
 
-  await bookAppointmentPage.fill({
-    facility: Facilities.HONGKONG,
-    hospitalReadmission: true,
-    healthcareProgram: HealthcarePrograms.MEDICARE,
-    visitDate: DateTime.now().toJSDate(),
-    comment: 'I told you I was sick',
-  });
+const now = TimeUtils.now();
 
-  const summaryPage = await bookAppointmentPage.bookAppointment();
+const appointmentInfo: AppointmentFormModel = {
+  facility: Facilities.HONGKONG,
+  hospitalReadmission: true,
+  healthcareProgram: HealthcarePrograms.MEDICARE,
+  visitDate: now.toJSDate() as string,
+  comment: 'I told you I was sick',
+};
+
+test('Book an appointment', async ({ bookAppointmentPage, summaryPage }) => {
+  await bookAppointmentPage.sectionHeader.makeAppointment();
+  await bookAppointmentPage.fill(appointmentInfo);
+  await bookAppointmentPage.bookAppointment();
   await summaryPage.verifyAppointmentConfirmed();
+});
+
+test('Check appointment history', async({ summaryPage, historyPage }) => {
+  await summaryPage.sectionHeader.navigationMenu.goToHistoryPage();
+  const returnedAppointmentInfo = await historyPage.getAppointmentByDate(now.toFormat('dd/MM/yyyy'));
+  const originalAppointmentInfo = {...appointmentInfo };
+  originalAppointmentInfo.visitDate = now.toFormat('dd/MM/yyyy');
+  await compareAppointments(originalAppointmentInfo, returnedAppointmentInfo);
 });

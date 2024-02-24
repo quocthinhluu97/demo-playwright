@@ -1,9 +1,9 @@
-import { chromium, FullConfig } from '@playwright/test';
+import { chromium } from '@playwright/test';
 import { LoginPage } from '@pages/login.page';
 import { Data } from "@data/data";
 import { DataFile, EnvironmentUtils } from "@utils/environment.util";
 
-async function globalSetup(config: FullConfig) {
+async function globalSetup() {
   const { accounts } = EnvironmentUtils.read<Data>(DataFile.TestData);
   const browser = await chromium.launch();
   const context = await browser.newContext();
