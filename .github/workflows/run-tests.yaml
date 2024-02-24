@@ -7,12 +7,12 @@ jobs:
     runs-on:  ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 16.13.x
+          node-version: 20
           cache: 'npm'
           cache-dependency-path: '**/package-lock.json'
 
@@ -21,12 +21,12 @@ jobs:
 
       - name: Cache playwright
         id: cache-playwright
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         env:
           cache-name: cache-playwright
         with:
           path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-1.26.1
+          key: ${{ runner.os }}-playwright-1.41.2
 
       - name: Install playwright
         if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
