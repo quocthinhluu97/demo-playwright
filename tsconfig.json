@@ -17,9 +17,6 @@
             "@utils/*": [
                 "./utils/*"
             ],
-            "@models/*": [
-                "./pages/models/*"
-            ],
             "@fixtures/*": [
                 "./fixtures/*"
             ],

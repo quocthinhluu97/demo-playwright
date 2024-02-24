@@ -1,3 +1,4 @@
+import { Page, Locator } from '@playwright/test';
 export class FooterComponent {
     readonly page: Page;
     readonly textCopyright: Locator;
