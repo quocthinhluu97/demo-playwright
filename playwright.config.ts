@@ -45,7 +45,7 @@ const config: PlaywrightTestConfig = {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'https://katalon-demo-cura.herokuapp.com',
 
-    storageState: process.env.STORAGE_STATE_PATH,
+    // storageState: process.env.STORAGE_STATE_PATH,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'retain-on-failure',
@@ -57,7 +57,7 @@ const config: PlaywrightTestConfig = {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
-        baseURL: process.env.BASE_URL as string,
+        storageState: process.env.AUTH_FILE!
       },
     },
 

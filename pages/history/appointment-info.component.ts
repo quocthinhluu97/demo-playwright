@@ -12,7 +12,7 @@ export class AppointmentInfo {
     
     constructor(page: Page, date: string) {
         this.page = page;
-        this.panelInfo = page.locator('.panel-info').filter({ has: page.locator(`.panel-heading:has-text("${date}")`)});
+        this.panelInfo = page.locator('.panel-info').filter({ has: page.locator(`.panel-heading:has-text("${date}")`)}).nth(0);
         this.paraFacility = this.panelInfo.locator('#facility');
         this.paraApplyForHospitalReadmission = this.panelInfo.locator('#hospital_readmission');
         this.paraHealthcareProgram = this.panelInfo.locator('#program');
