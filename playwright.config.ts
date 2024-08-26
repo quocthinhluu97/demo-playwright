@@ -54,11 +54,13 @@ const config: PlaywrightTestConfig = {
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
+      name: 'E2E_Chrome',
       use: {
         ...devices['Desktop Chrome'],
         storageState: process.env.AUTH_FILE!
       },
+      testDir: 'tests/',
+      testIgnore: 'tests/examples/**'
     },
 
     // {
