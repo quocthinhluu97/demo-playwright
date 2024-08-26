@@ -6,5 +6,4 @@ export type Data = {
 export interface Account {
     username: string;
     password: string;
-    storageState: string;
 }

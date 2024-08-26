@@ -1,18 +1,11 @@
+import AppSettings from "@constants/app-settings.const";
 import fs from "promise-fs";
-
-export enum DataFile {
-    TestData = "./data/data.#ENV#.json"
-}
 
 export class EnvironmentUtils {
     private static data = {};
 
-    private static env() {
-        return process.env.ENVIRONMENT ?? "prod";
-    }
-
-    static read<T>(dataFile: DataFile) {
-        const envFilePath = dataFile.replace('#ENV#', this.env());
+    static read<T>(dataFile: string) {
+        const envFilePath = AppSettings.ACCOUNTS.replace('#ENV#', process.env.NODE_ENV!);
         const jsonData = fs.readFileSync(envFilePath, { encoding: 'utf-8' });
         const parsedData = JSON.parse(jsonData) as T;
         this.data[dataFile] = parsedData;

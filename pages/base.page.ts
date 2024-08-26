@@ -1,8 +1,7 @@
 import { Page } from "@playwright/test";
-import { DataFile, EnvironmentUtils } from '@utils/environment.util';
-import { Data } from '@data/data';
 import { HeaderComponent } from '@pages/_layout/header.component';
 import { FooterComponent } from '@pages/_layout/footer.component';
+import AppSettings from "@constants/app-settings.const";
 
 export abstract class BasePage {
     readonly page: Page;
@@ -17,7 +16,7 @@ export abstract class BasePage {
     }
 
     async navigate() {
-        const { baseUrl } = EnvironmentUtils.read<Data>(DataFile.TestData);
+        const baseUrl = AppSettings.BASE_URL;
         await Promise.all([
             this.page.goto(baseUrl),
             this.waitForNetworkIdle(),
